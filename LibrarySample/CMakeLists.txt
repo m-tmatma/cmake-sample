@@ -24,5 +24,5 @@ add_subdirectory(Program)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 # create solution folder
-set_target_properties(Library     PROPERTIES FOLDER library)
-set_target_properties(Program     PROPERTIES FOLDER executable)
+set_target_properties(Library        PROPERTIES FOLDER library)
+set_target_properties(sample_program PROPERTIES FOLDER executable)

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.6.4)
 
 # define a variable of project name
-set( project_name "Program")
+set( project_name sample_program)
 
 # set the project as the startup project
 set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT ${project_name} )

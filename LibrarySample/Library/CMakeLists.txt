@@ -13,7 +13,7 @@ file(GLOB SRC *.c *.h)
 include_directories(${PROJECT_BINARY_DIR})
 
 # define sources files of an executable
-add_library(${project_name} SHARED ${SRC} ${PROJECT_BINARY_DIR}/${project_name}_Export.h)
+add_library(${project_name} ${LIB_TYPE} ${SRC} ${PROJECT_BINARY_DIR}/${project_name}_Export.h)
 
 include (GenerateExportHeader)
 GENERATE_EXPORT_HEADER( ${project_name}

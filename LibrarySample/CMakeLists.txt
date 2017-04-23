@@ -1,5 +1,15 @@
 cmake_minimum_required(VERSION 2.6.4)
 
+# see https://cmake.org/Wiki/BuildingWinDLL
+# Allow the developer to select if Dynamic or Static libraries are built
+option (BUILD_SHARED_LIBS "Build Shared Libraries" ON)
+# Set the LIB_TYPE variable to STATIC
+set (LIB_TYPE STATIC)
+if (BUILD_SHARED_LIBS)
+  # User wants to build Dynamic Libraries, so change the LIB_TYPE variable to CMake keyword 'SHARED'
+  set (LIB_TYPE SHARED)
+endif (BUILD_SHARED_LIBS)
+
 project (LibraryTest)
 
 set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT "Program" )

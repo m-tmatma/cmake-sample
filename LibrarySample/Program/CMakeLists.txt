@@ -12,16 +12,32 @@ project (${project_name})
 # define a variable SRC with file GLOB
 file(GLOB SRC *.c *.h)
 
-# add include directory
-# https://cmake.org/cmake/help/v3.0/variable/PROJECT-NAME_SOURCE_DIR.html
-include_directories(${Library_SOURCE_DIR})
+set(external_projs ${external_projs} Library)
 
-# add include directory for ${project_name}_Export.h
-# https://cmake.org/cmake/help/v3.0/variable/PROJECT-NAME_BINARY_DIR.html
-include_directories(${Library_BINARY_DIR})
+# https://cmake.org/cmake/help/v3.0/command/foreach.html
+foreach(loop_var IN LISTS external_projs)
+	# add include directory
+	# https://cmake.org/cmake/help/v3.0/variable/PROJECT-NAME_SOURCE_DIR.html
+	include_directories(${${loop_var}_SOURCE_DIR})
+
+	# add include directory for ${project_name}_Export.h
+	# https://cmake.org/cmake/help/v3.0/variable/PROJECT-NAME_BINARY_DIR.html
+	include_directories(${${loop_var}_BINARY_DIR})
+endforeach()
+
+## add include directory
+## https://cmake.org/cmake/help/v3.0/variable/PROJECT-NAME_SOURCE_DIR.html
+#include_directories(${Library_SOURCE_DIR})
+#
+## add include directory for ${project_name}_Export.h
+## https://cmake.org/cmake/help/v3.0/variable/PROJECT-NAME_BINARY_DIR.html
+#include_directories(${Library_BINARY_DIR})
 
 # define sources files of an executable
 add_executable(${project_name} ${SRC})
 
 # link a library
-target_link_libraries(${project_name} Library)
+foreach(loop_var IN LISTS external_projs)
+	target_link_libraries(${project_name} ${loop_var})
+endforeach()
+#target_link_libraries(${project_name} Library)

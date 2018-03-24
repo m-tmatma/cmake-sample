@@ -13,10 +13,12 @@ project (${project_name})
 file(GLOB SRC *.c *.h)
 
 # add include directory
-include_directories(../Library)
+# https://cmake.org/cmake/help/v3.0/variable/PROJECT-NAME_SOURCE_DIR.html
+include_directories(${Library_SOURCE_DIR})
 
 # add include directory for ${project_name}_Export.h
-include_directories(${PROJECT_BINARY_DIR}/../Library)
+# https://cmake.org/cmake/help/v3.0/variable/PROJECT-NAME_BINARY_DIR.html
+include_directories(${Library_BINARY_DIR})
 
 # define sources files of an executable
 add_executable(${project_name} ${SRC})

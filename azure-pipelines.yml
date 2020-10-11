@@ -39,6 +39,12 @@ jobs:
       Win64_Release:
         BuildPlatform: 'x64'
         Configuration: 'Release'
+      ARM64_Debug:
+        BuildPlatform: 'ARM64'
+        Configuration: 'Debug'
+      ARM64_Release:
+        BuildPlatform: 'ARM64'
+        Configuration: 'Release'
 
   steps:
   # show environmental variables for debug.

@@ -1,0 +1,47 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+trigger:
+  branches:
+    include:
+      - master
+      - develop
+      - feature/*
+      - revert-*
+
+pr:
+  branches:
+    include:
+      - master
+      - develop
+      - feature/*
+      - revert-*
+
+jobs:
+- job: VS2019
+  displayName: VS2019
+  pool:
+    vmImage: 'windows-latest'
+
+  strategy:
+    maxParallel: 4
+    matrix:
+      Win32_Debug:
+        BuildPlatform: 'Win32'
+        Configuration: 'Debug'
+      Win32_Release:
+        BuildPlatform: 'Win32'
+        Configuration: 'Release'
+      Win64_Debug:
+        BuildPlatform: 'x64'
+        Configuration: 'Debug'
+      Win64_Release:
+        BuildPlatform: 'x64'
+        Configuration: 'Release'
+
+  steps:
+  # show environmental variables for debug.
+  - script: set
+    displayName: Show environmental variables for debug
+

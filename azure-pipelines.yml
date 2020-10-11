@@ -25,7 +25,6 @@ jobs:
     vmImage: 'windows-latest'
 
   strategy:
-    maxParallel: 4
     matrix:
       Win32_Debug:
         BuildPlatform: 'Win32'

@@ -55,3 +55,6 @@ jobs:
 
   - script: cmake --build workdir --config $(Configuration)
     displayName: cmake $(BuildPlatform) $(Configuration)
+
+  - script: dumpbin /headers workdir\$(BuildPlatform)\$(Configuration)\HelloWorld.exe
+    displayName: cmake $(BuildPlatform) $(Configuration)

@@ -51,3 +51,8 @@ jobs:
   - script: set
     displayName: Show environmental variables for debug
 
+  - script: cmake -G "Visual Studio 2019" -A  $(BuildPlatform) -S HelloWorld -B workdir
+    displayName: cmake
+
+  - script: cmake --build workdir --config $(Configuration)
+    displayName: cmake $(BuildPlatform) $(Configuration)
